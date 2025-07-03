@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Wöchentliche Reflexion</title>
+  
+  <!-- PWA Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Reflexion">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#667eea">
+  <meta name="msapplication-TileColor" content="#667eea">
+  
+  <!-- App Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9InVybCgjZ3JhZGllbnQwX2xpbmVhcl8xXzEpIi8+CjxwYXRoIGQ9Ik05MCA0NUM2Ny45MDg2IDQ1IDUwIDYyLjkwODYgNTAgODVDNTAgMTA3LjA5MSA2Ny45MDg2IDEyNSA5MCAxMjVDMTEyLjA5MSAxMjUgMTMwIDEwNy4wOTEgMTMwIDg1QzEzMCA2Mi45MDg2IDExMi4wOTEgNDUgOTAgNDVaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNzUgODVMODUgOTVMMTA1IDc1IiBzdHJva2U9IiM2NjdlZWEiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSIxODAiIHkyPSIxODAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzY2N2VlYSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3NjRiYTIiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNncmFkaWVudDBfbGluZWFyXzFfMSkiLz4KPHBhdGggZD0iTTE2IDhDMTIuMTMgOCA5IDExLjEzIDkgMTVDOSAxOC44NyAxMi4xMyAyMiAxNiAyMkMxOS44NyAyMiAyMyAxOC44NyAyMyAxNUMyMyAxMS4xMyAxOS44NyA4IDE2IDhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTMgMTVMMTUgMTdMMTkgMTMiIHN0cm9rZT0iIzY2N2VlYSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQwX2xpbmVhcl8xXzEiIHgxPSIwIiB5MT0iMCIgeDI9IjMyIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzY2N2VlYSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3NjRiYTIiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K">
+  <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlXDnGNlaGVudGxpY2hlIFJlZmxleGlvbiIsCiAgInNob3J0X25hbWUiOiAiUmVmbGV4aW9uIiwKICAiZGVzY3JpcHRpb24iOiAiRGVpbmUgcGVyc8O2bmxpY2hlIFJlZmxleGlvbnMtQXBwIGbDvHIgZWluZSBiZXNzZXJlIFdvcmstTGlmZS1CYWxhbmNlIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiM2NjdlZWEiLAogICJ0aGVtZV9jb2xvciI6ICIjNjY3ZWVhIiwKICAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVGd3SWlCb1pXbG5hSFE5SWpFNE1DSWlJSFpwWlhkQ2IzZzlJakFnTUNBeE9EQWdNVGd3SWlCbWFXeHNQU0p1YjI1bElpQjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaVBnbzhjbVZqZENCM2FXUjBhRDBpTVRnd0lpQm9aV2xuYUhROU1UZ3dJaUJ5ZUQwaU5EQWlJR1pwYkd3OUluVnliQ2duSjJkeVlXUnBaVzUwTUY5c2FXNWxZWEpmTVY4eEtTY3ZQZ284Y0dGMGFDQmtQU0pOT1RBZ05EVkROamN1T1RBNE5pQTBOU0ExTUNBMk1pNDVNRGcySURVd0lEZzFRell3SURFd055NDFJRGMySURFeU5TQTVNQ0F4TWpWRE1URXlMakE1TVRFNU5VQXhNekFnTVRBM0xqQTVNVEU0TUVBNFpWSXpNQ0EyTWk1NU1EZzJJREV4TWk0d09URWdORFpKSWlCbWFXeHNQU0ozYUdsMFpTSXZQZ284Y0dGMGFDQmtQU0pOTnpVZ09EVkROVGdpSURFNE9DSjVUREV3TlNBM05TSWdjM1J5YjJ0bFBTSWpOalkzWldWaElpQnpkSEp2YTJVdGQybGtkR2c5SWpVaUlITjBjbTlyWlMxc2FXNWxZMkZ3UFNJM2NtOTFibVFpSUhOMGNtOXJaUzFzYVc1bGFtOXBianBpWW1GdWNtOTFibVFpTHo0OFpHVm1jejQ4YkdsdVpXRnlSM0poWkdsbGJuUWdhV1E5SWlkbmNtRmthV1Z1ZERCZmJHbHVaV0Z5WDJWOE1WOHhJaUI0TVQASURVZ0lTNHdJaUI0TVYxaU1UWXVPU0lnZVRGSVFqVXRNVGcwUTJkeVlXUnBaVzUwVlc1cGRITTlJblZ6WlhKVGNHRmpaVTl1VlhObElqNG5jR3hwY0RGOFNnQmpTa1F5VlVScFpVZDBVVzlJVGxSQU1WNkJkQ1ZkYW1sYVdYOHhJSE4wYjNBSWMzUnZjQzFqYjJ4dmNqMGlJM1kyTjJWbFlTSWdMejQ4YzNSdmNDQnZabVp6WlhROElqRWlJSE4wYjNBdFkyOXNiM0k5SWlNM05qUmlZVElpTHo0OEwyeHBibVZoY2tkeVlXUnBaVzUwUGdvOEwyUmxabk0rUGdvOEwzTjJaejRLIn0KICBdCn0=">
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --text-primary: #2d3748;
+      --text-secondary: #4a5568;
+      --border-color: rgba(255, 255, 255, 0.2);
+      --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      color: var(--text-primary);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: var(--primary-gradient);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-gradient);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-success {
+      background: var(--success-gradient);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-warning {
+      background: var(--warning-gradient);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+    }
+
+    .form-group {
+      margin-bottom: 2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+
+    /* Slider Styles */
+    .slider-container {
+      position: relative;
+      margin: 1rem 0;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #ff6b6b 0%, #ffa500 50%, #4ecdc4 100%);
+      outline: none;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border: 3px solid #667eea;
+      transition: all 0.2s ease;
+    }
+
+    .slider::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border: 3px solid #667eea;
+      transition: all 0.2s ease;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .slider-value {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary-gradient);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      box-shadow: var(--shadow);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .slider-value.show {
+      opacity: 1;
+    }
+
+    /* Custom Select Styles */
+    .custom-select {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .custom-select select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1rem;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.75rem center;
+      background-repeat: no-repeat;
+      background-size: 1.5em 1.5em;
+      padding-right: 2.5rem;
+    }
+
+    .custom-select select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    /* Textarea Styles */
+    .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 100px;
+      transition: all 0.3s ease;
+    }
+
+    .form-textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .form-textarea::placeholder {
+      color: #a0aec0;
+    }
+
+    /* Button Group */
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Table Styles */
+    .table-container {
+      overflow-x: auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin-top: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    th {
+      background: var(--primary-gradient);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.875rem;
+    }
+
+    td {
+      color: var(--text-secondary);
+    }
+
+    tr:hover {
+      background: rgba(102, 126, 234, 0.05);
+    }
+
+    /* Chart Container */
+    .chart-container {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-secondary);
+    }
+
+    .empty-state svg {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    /* PWA Styles */
+    .pwa-install-banner {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: var(--primary-gradient);
+      color: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      display: none;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    .pwa-install-banner.show {
+      display: block;
+      animation: slideInUp 0.3s ease-out;
+    }
+
+    @keyframes slideInUp {
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .pwa-banner-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .pwa-banner-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .pwa-banner-text h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .pwa-banner-text p {
+      margin: 0;
+      font-size: 0.875rem;
+      opacity: 0.9;
+    }
+
+    .pwa-banner-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .pwa-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pwa-btn-install {
+      background: white;
+      color: #667eea;
+    }
+
+    .pwa-btn-close {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .pwa-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    /* iOS specific styles */
+    @supports (-webkit-touch-callout: none) {
+      body {
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-top: env(safe-area-inset-top);
+      }
+      
+      .container {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+      }
+    }
+
+    /* Standalone app styles */
+    @media (display-mode: standalone) {
+      body {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      
+      .nav-buttons {
+        padding-top: 1rem;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .toolbar {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .button-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .pwa-banner-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .pwa-banner-text {
+        text-align: center;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Success Animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .pulse {
+      animation: pulse 0.6s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ Wöchentliche Reflexion ✨</h1>
+
+    <div class="nav-buttons">
+      <button id="btnForm" class="btn btn-primary">📝 Fragebogen ausfüllen</button>
+      <button id="btnOverview" class="btn btn-secondary">📊 Übersicht & Statistik</button>
+    </div>
+
+    <!-- Formular-Ansicht -->
+    <section id="formSection" class="fade-in-up">
+      <div class="card">
+        <h2>Wie war deine Woche?</h2>
+        <form id="reflectionForm">
+          <div class="form-group">
+            <label class="form-label" for="zufriedenheit">Allgemeine Zufriedenheit</label>
+            <div class="slider-container">
+              <div class="slider-value" id="zufriedenheitValue">5</div>
+              <input type="range" id="zufriedenheit" name="zufriedenheit" min="1" max="10" value="5" class="slider" required />
+              <div class="slider-labels">
+                <span>😞 Sehr unzufrieden</span>
+                <span>😊 Sehr zufrieden</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="stress">Stresslevel</label>
+            <div class="slider-container">
+              <div class="slider-value" id="stressValue">5</div>
+              <input type="range" id="stress" name="stress" min="1" max="10" value="5" class="slider" required />
+              <div class="slider-labels">
+                <span>😌 Sehr entspannt</span>
+                <span>😰 Sehr gestresst</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="erfolge">🎉 Besondere Erfolge & Highlights</label>
+            <textarea id="erfolge" name="erfolge" class="form-textarea" placeholder="Was lief diese Woche besonders gut? Worauf bist du stolz?"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="herausforderungen">💭 Herausforderungen & Lernmomente</label>
+            <textarea id="herausforderungen" name="herausforderungen" class="form-textarea" placeholder="Welche Situationen waren herausfordernd? Was hast du daraus gelernt?"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="team">Zusammenarbeit im Team</label>
+            <div class="slider-container">
+              <div class="slider-value" id="teamValue">5</div>
+              <input type="range" id="team" name="team" min="1" max="10" value="5" class="slider" />
+              <div class="slider-labels">
+                <span>🤝 Schwierig</span>
+                <span>🌟 Hervorragend</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="wertschaetzung">💝 Fühlte ich mich wertgeschätzt?</label>
+            <div class="custom-select">
+              <select id="wertschaetzung" name="wertschaetzung">
+                <option value="ja">✅ Ja, definitiv</option>
+                <option value="nein">❌ Nein, leider nicht</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="grenzen">Eigene Bedürfnisse & Grenzen gewahrt</label>
+            <div class="slider-container">
+              <div class="slider-value" id="grenzenValue">5</div>
+              <input type="range" id="grenzen" name="grenzen" min="1" max="10" value="5" class="slider" />
+              <div class="slider-labels">
+                <span>🚫 Gar nicht</span>
+                <span>✅ Vollständig</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fazit">🎯 Gesamtfazit der Woche</label>
+            <div class="custom-select">
+              <select id="fazit" name="fazit">
+                <option value="positiv">🌟 Positiv</option>
+                <option value="negativ">😔 Negativ</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="btn btn-success">💾 Eintrag speichern</button>
+            <button type="reset" class="btn btn-warning">🔄 Zurücksetzen</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Übersicht-Ansicht -->
+    <section id="overviewSection" style="display:none;" class="fade-in-up">
+      <div class="card">
+        <h2>📈 Deine Reflexions-Übersicht</h2>
+        
+        <div class="toolbar">
+          <button id="btnExportCSV" class="btn btn-primary">📊 Export als CSV</button>
+          <button id="btnBackupJSON" class="btn btn-secondary">💾 Backup exportieren</button>
+          <button id="btnImportJSON" class="btn btn-success">📂 Backup importieren</button>
+          <input type="file" id="fileInput" accept="application/json" style="display:none;" />
+          <button id="btnClearAll" class="btn btn-danger">🗑️ Alle löschen</button>
+        </div>
+
+        <div class="table-container">
+          <table id="entriesTable">
+            <thead>
+              <tr>
+                <th>Datum</th>
+                <th>Zufriedenheit</th>
+                <th>Stress</th>
+                <th>Erfolge</th>
+                <th>Herausforderungen</th>
+                <th>Team</th>
+                <th>Wertschätzung</th>
+                <th>Grenzen</th>
+                <th>Fazit</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="trendChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- PWA Install Banner -->
+    <div id="pwaInstallBanner" class="pwa-install-banner">
+      <div class="pwa-banner-content">
+        <div class="pwa-banner-text">
+          <h3>📱 App installieren</h3>
+          <p>Installiere die Reflexions-App für einen schnelleren Zugriff!</p>
+        </div>
+        <div class="pwa-banner-buttons">
+          <button id="pwaInstallBtn" class="pwa-btn pwa-btn-install">Installieren</button>
+          <button id="pwaCloseBtn" class="pwa-btn pwa-btn-close">×</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+
+  <script>
+    // PWA Installation
+    let deferredPrompt;
+    const pwaInstallBanner = document.getElementById('pwaInstallBanner');
+    const pwaInstallBtn = document.getElementById('pwaInstallBtn');
+    const pwaCloseBtn = document.getElementById('pwaCloseBtn');
+
+    // Check if app is already installed
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      // App is already installed, don't show banner
+      pwaInstallBanner.style.display = 'none';
+    }
+
+    // Listen for beforeinstallprompt event
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      // Show install banner after a delay
+      setTimeout(() => {
+        if (!window.matchMedia('(display-mode: standalone)').matches) {
+          pwaInstallBanner.classList.add('show');
+        }
+      }, 3000);
+    });
+
+    // Handle install button click
+    pwaInstallBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+          console.log('PWA installiert');
+        }
+        
+        deferredPrompt = null;
+        pwaInstallBanner.classList.remove('show');
+      }
+    });
+
+    // Handle close button
+    pwaCloseBtn.addEventListener('click', () => {
+      pwaInstallBanner.classList.remove('show');
+      // Don't show again for this session
+      sessionStorage.setItem('pwa-banner-dismissed', 'true');
+    });
+
+    // Don't show banner if dismissed in this session
+    if (sessionStorage.getItem('pwa-banner-dismissed')) {
+      pwaInstallBanner.style.display = 'none';
+    }
+
+    // iOS Safari specific detection and instructions
+    function isIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent);
+    }
+
+    function isInStandaloneMode() {
+      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    }
+
+    // Show iOS specific install instructions
+    if (isIOS() && !isInStandaloneMode() && !sessionStorage.getItem('ios-install-shown')) {
+      setTimeout(() => {
+        const iosInstallMsg = `
+          📱 Installiere diese App auf deinem iPhone:
+          
+          1. Tippe auf das Teilen-Symbol unten ⬆️
+          2. Wähle "Zum Home-Bildschirm" 📲
+          3. Tippe "Hinzufügen" ✅
+          
+          So hast du schnellen Zugriff auf deine Reflexionen!
+        `;
+        
+        if (confirm(iosInstallMsg)) {
+          sessionStorage.setItem('ios-install-shown', 'true');
+        }
+      }, 5000);
+    }
+
+    // In-Memory Storage
+    let reflectionData = [];
+
+    // DOM Elements
+    const formSection = document.getElementById('formSection');
+    const overviewSection = document.getElementById('overviewSection');
+    const btnForm = document.getElementById('btnForm');
+    const btnOverview = document.getElementById('btnOverview');
+    const form = document.getElementById('reflectionForm');
+    const tbody = document.querySelector('#entriesTable tbody');
+
+    // Slider value displays
+    const sliders = ['zufriedenheit', 'stress', 'team', 'grenzen'];
+    sliders.forEach(sliderId => {
+      const slider = document.getElementById(sliderId);
+      const valueDisplay = document.getElementById(sliderId + 'Value');
+      
+      slider.addEventListener('input', (e) => {
+        const value = e.target.value;
+        valueDisplay.textContent = value;
+        valueDisplay.classList.add('show');
+        
+        // Position the value display
+        const percentage = (value - slider.min) / (slider.max - slider.min) * 100;
+        valueDisplay.style.left = `${percentage}%`;
+      });
+      
+      slider.addEventListener('mouseenter', () => {
+        const valueDisplay = document.getElementById(sliderId + 'Value');
+        valueDisplay.classList.add('show');
+      });
+      
+      slider.addEventListener('mouseleave', () => {
+        const valueDisplay = document.getElementById(sliderId + 'Value');
+        valueDisplay.classList.remove('show');
+      });
+    });
+
+    // Navigation
+    btnForm.addEventListener('click', () => {
+      formSection.style.display = 'block';
+      overviewSection.style.display = 'none';
+      btnForm.classList.add('pulse');
+      setTimeout(() => btnForm.classList.remove('pulse'), 600);
+    });
+
+    btnOverview.addEventListener('click', () => {
+      formSection.style.display = 'none';
+      overviewSection.style.display = 'block';
+      btnOverview.classList.add('pulse');
+      setTimeout(() => btnOverview.classList.remove('pulse'), 600);
+      renderTable();
+      renderChart();
+    });
+
+    // Data management
+    function loadEntries() {
+      return reflectionData;
+    }
+
+    function saveEntries(entries) {
+      reflectionData = entries;
+    }
+
+    // Form submission
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      const entry = {
+        id: Date.now(),
+        datum: new Date().toISOString().slice(0, 10),
+        zufriedenheit: Number(formData.get('zufriedenheit')),
+        stress: Number(formData.get('stress')),
+        erfolge: formData.get('erfolge').trim(),
+        herausforderungen: formData.get('herausforderungen').trim(),
+        team: formData.get('team') ? Number(formData.get('team')) : null,
+        wertschaetzung: formData.get('wertschaetzung'),
+        grenzen: formData.get('grenzen') ? Number(formData.get('grenzen')) : null,
+        fazit: formData.get('fazit')
+      };
+
+      const entries = loadEntries();
+      entries.push(entry);
+      saveEntries(entries);
+
+      // Success animation
+      const submitBtn = document.querySelector('button[type="submit"]');
+      submitBtn.classList.add('pulse');
+      setTimeout(() => submitBtn.classList.remove('pulse'), 600);
+
+      // Show success message with emoji
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = '✅ Gespeichert!';
+      submitBtn.style.background = 'var(--warning-gradient)';
+      
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.style.background = 'var(--success-gradient)';
+      }, 2000);
+
+      form.reset();
+      
+      // Reset sliders to default
+      sliders.forEach(sliderId => {
+        const slider = document.getElementById(sliderId);
+        const valueDisplay = document.getElementById(sliderId + 'Value');
+        slider.value = 5;
+        valueDisplay.textContent = '5';
+      });
+    });
+
+    // Table rendering
+    function renderTable() {
+      const entries = loadEntries();
+      tbody.innerHTML = '';
+      
+      if (entries.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="9" class="empty-state">
+              <div>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <p>Noch keine Einträge vorhanden.</p>
+                <p>Fülle den ersten Fragebogen aus! 🚀</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      entries.forEach(e => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${e.datum}</strong></td>
+          <td><span style="color: ${e.zufriedenheit >= 7 ? '#4ecdc4' : e.zufriedenheit >= 4 ? '#ffa500' : '#ff6b6b'}">${e.zufriedenheit}/10</span></td>
+          <td><span style="color: ${e.stress <= 3 ? '#4ecdc4' : e.stress <= 6 ? '#ffa500' : '#ff6b6b'}">${e.stress}/10</span></td>
+          <td>${e.erfolge || '—'}</td>
+          <td>${e.herausforderungen || '—'}</td>
+          <td>${e.team !== null ? `<span style="color: ${e.team >= 7 ? '#4ecdc4' : e.team >= 4 ? '#ffa500' : '#ff6b6b'}">${e.team}/10</span>` : '—'}</td>
+          <td>${e.wertschaetzung === 'ja' ? '✅ Ja' : '❌ Nein'}</td>
+          <td>${e.grenzen !== null ? `<span style="color: ${e.grenzen >= 7 ? '#4ecdc4' : e.grenzen >= 4 ? '#ffa500' : '#ff6b6b'}">${e.grenzen}/10</span>` : '—'}</td>
+          <td>${e.fazit === 'positiv' ? '🌟 Positiv' : '😔 Negativ'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Chart rendering
+    let chartInstance = null;
+
+    function renderChart() {
+      const entries = loadEntries();
+      
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+      
+      if (entries.length === 0) {
+        document.getElementById('trendChart').style.display = 'none';
+        return;
+      }
+      
+      document.getElementById('trendChart').style.display = 'block';
+      entries.sort((a,b) => new Date(a.datum) - new Date(b.datum));
+
+      const labels = entries.map(e => e.datum);
+      const dataZufriedenheit = entries.map(e => e.zufriedenheit);
+      const dataStress = entries.map(e => e.stress);
+      const dataTeam = entries.map(e => e.team !== null ? e.team : null);
+      const dataGrenzen = entries.map(e => e.grenzen !== null ? e.grenzen : null);
+
+      const ctx = document.getElementById('trendChart').getContext('2d');
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: '😊 Zufriedenheit',
+              data: dataZufriedenheit,
+              borderColor: '#4ecdc4',
+              backgroundColor: 'rgba(78, 205, 196, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 6,
+              pointHoverRadius: 8
+            },
+            {
+              label: '😰 Stress',
+              data: dataStress,
+              borderColor: '#ff6b6b',
+              backgroundColor: 'rgba(255, 107, 107, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 6,
+              pointHoverRadius: 8
+            },
+            {
+              label: '🤝 Team',
+              data: dataTeam,
+              borderColor: '#667eea',
+              backgroundColor: 'rgba(102, 126, 234, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 6,
+              pointHoverRadius: 8,
+              spanGaps: true
+            },
+            {
+              label: '✅ Grenzen',
+              data: dataGrenzen,
+              borderColor: '#ffa500',
+              backgroundColor: 'rgba(255, 165, 0, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 6,
+              pointHoverRadius: 8,
+              spanGaps: true
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                usePointStyle: true,
+                pointStyle: 'circle',
+                padding: 20,
+                font: {
+                  size: 14,
+                  weight: 'bold'
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Export functions with better mobile UX
+    function downloadFile(content, filename, contentType) {
+      const blob = new Blob([content], { type: contentType });
+      
+      // For mobile devices, try to use the native share API
+      if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
+        const file = new File([blob], filename, { type: contentType });
+        
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator.share({
+            files: [file],
+            title: 'Reflexions-Export',
+            text: 'Hier ist dein Reflexions-Export!'
+          }).catch(err => {
+            console.log('Share failed:', err);
+            // Fallback to download
+            fallbackDownload(blob, filename);
+          });
+          return;
+        }
+      }
+      
+      // Fallback to traditional download
+      fallbackDownload(blob, filename);
+    }
+
+    function fallbackDownload(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    },
+                  weight: 'bold'
+                }
+              }
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              titleColor: 'white',
+              bodyColor: 'white',
+              borderColor: '#667eea',
+              borderWidth: 1,
+              cornerRadius: 8,
+              displayColors: true
+            }
+          },
+          interaction: {
+            mode: 'index',
+            intersect: false
+          },
+          scales: {
+            y: {
+              min: 0,
+              max: 10,
+              ticks: {
+                stepSize: 1,
+                color: '#718096',
+                font: {
+                  size: 12
+                }
+              },
+              grid: {
+                color: 'rgba(113, 128, 150, 0.1)'
+              },
+              title: {
+                display: true,
+                text: 'Bewertung (1-10)',
+                color: '#2d3748',
+                font: {
+                  size: 14,
+                  weight: 'bold'
+                }
+              }
+            },
+            x: {
+              ticks: {
+                color: '#718096',
+                font: {
+                  size: 12
+                }
+              },
+              grid: {
+                color: 'rgba(113, 128, 150, 0.1)'
+              },
+              title: {
+                display: true,
+                text: 'Datum',
+                color: '#2d3748',
+                font: {
+                  size: 14
