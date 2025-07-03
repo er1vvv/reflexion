@@ -355,7 +355,7 @@
 
     #trendChart {
       display: block;
-      min-width: 600px;
+      min-width: 800px;
     }
 
     .empty-state {
@@ -582,15 +582,15 @@
           <table id="entriesTable">
             <thead>
               <tr>
-                <th>Datum</th>
-                <th>Zufriedenheit</th>
-                <th>Stress</th>
-                <th>Erfolge</th>
-                <th>Herausforderungen</th>
-                <th>Team</th>
-                <th>Wertschätzung</th>
-                <th>Grenzen</th>
-                <th>Fazit</th>
+                <th id="thDate">Datum</th>
+                <th id="thSatisfaction">Zufriedenheit</th>
+                <th id="thStress">Stress</th>
+                <th id="thSuccesses">Erfolge</th>
+                <th id="thChallenges">Herausforderungen</th>
+                <th id="thTeam">Team</th>
+                <th id="thAppreciation">Wertschätzung</th>
+                <th id="thBoundaries">Grenzen</th>
+                <th id="thSummary">Fazit</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -664,7 +664,21 @@
         confirmDelete: 'Wirklich alle Einträge löschen? Diese Aktion kann nicht rückgängig gemacht werden.',
         emptyStateText: 'Noch keine Einträge vorhanden.',
         emptyStateSubtext: 'Fülle den ersten Fragebogen aus! 🚀',
-        chartEmpty: '📈 Fülle Einträge aus, um Trends zu sehen'
+        chartEmpty: '📈 Fülle Einträge aus, um Trends zu sehen',
+        chartTitle: '📈 Entwicklung der Bewertungen',
+        satisfactionChart: '😊 Zufriedenheit',
+        stressChart: '😰 Stress',
+        teamChart: '🤝 Team',
+        boundariesChart: '✅ Grenzen',
+        tableDate: 'Datum',
+        tableSatisfaction: 'Zufriedenheit',
+        tableStress: 'Stress',
+        tableSuccesses: 'Erfolge',
+        tableChallenges: 'Herausforderungen',
+        tableTeam: 'Team',
+        tableAppreciation: 'Wertschätzung',
+        tableBoundaries: 'Grenzen',
+        tableSummary: 'Fazit'
       },
       en: {
         mainTitle: '✨ Weekly Reflection ✨',
@@ -713,7 +727,21 @@
         confirmDelete: 'Really delete all entries? This action cannot be undone.',
         emptyStateText: 'No entries available yet.',
         emptyStateSubtext: 'Fill out the first questionnaire! 🚀',
-        chartEmpty: '📈 Fill out entries to see trends'
+        chartEmpty: '📈 Fill out entries to see trends',
+        chartTitle: '📈 Development of Ratings',
+        satisfactionChart: '😊 Satisfaction',
+        stressChart: '😰 Stress',
+        teamChart: '🤝 Team',
+        boundariesChart: '✅ Boundaries',
+        tableDate: 'Date',
+        tableSatisfaction: 'Satisfaction',
+        tableStress: 'Stress',
+        tableSuccesses: 'Successes',
+        tableChallenges: 'Challenges',
+        tableTeam: 'Team',
+        tableAppreciation: 'Appreciation',
+        tableBoundaries: 'Boundaries',
+        tableSummary: 'Summary'
       }
     };
 
@@ -768,6 +796,26 @@
 
       // Update text elements
       Object.entries(elements).forEach(([key, id]) => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.textContent = t(key);
+        }
+      });
+
+      // Update table headers
+      const tableHeaders = {
+        tableDate: 'thDate',
+        tableSatisfaction: 'thSatisfaction', 
+        tableStress: 'thStress',
+        tableSuccesses: 'thSuccesses',
+        tableChallenges: 'thChallenges',
+        tableTeam: 'thTeam',
+        tableAppreciation: 'thAppreciation',
+        tableBoundaries: 'thBoundaries',
+        tableSummary: 'thSummary'
+      };
+
+      Object.entries(tableHeaders).forEach(([key, id]) => {
         const element = document.getElementById(id);
         if (element) {
           element.textContent = t(key);
@@ -1010,13 +1058,13 @@
 
       entries.sort((a, b) => new Date(a.datum) - new Date(b.datum));
 
-      // Adjust canvas width for horizontal scroll
-      const minWidth = 600;
+      // Adjust canvas width for horizontal scroll and better legend spacing
+      const minWidth = 800; // Increased from 600 for better legend spacing
       const optimalWidth = Math.max(minWidth, entries.length * 100 + 120);
       canvas.width = optimalWidth;
       canvas.style.width = optimalWidth + 'px';
 
-      const padding = 60;
+      const padding = 80; // Increased padding to accommodate two-row legend
       const chartWidth = canvas.width - (padding * 2);
       const chartHeight = canvas.height - (padding * 2);
 
@@ -1109,35 +1157,74 @@
         ctx.fillText(date, x, padding + chartHeight + 20);
       }
 
-      // Legend
+      // Legend (using translation function) - Smart responsive layout
       const legendItems = [
-        { color: '#4ecdc4', label: currentLanguage === 'de' ? '😊 Zufriedenheit' : '😊 Satisfaction' },
-        { color: '#ff6b6b', label: currentLanguage === 'de' ? '😰 Stress' : '😰 Stress' },
-        { color: '#667eea', label: currentLanguage === 'de' ? '🤝 Team' : '🤝 Team' },
-        { color: '#ffa500', label: currentLanguage === 'de' ? '✅ Grenzen' : '✅ Boundaries' }
+        { color: '#4ecdc4', label: t('satisfactionChart') },
+        { color: '#ff6b6b', label: t('stressChart') },
+        { color: '#667eea', label: t('teamChart') },
+        { color: '#ffa500', label: t('boundariesChart') }
       ];
 
-      let legendX = padding;
-      const legendY = 30;
-
+      // Calculate total width needed for single row
+      let totalWidthNeeded = 0;
       legendItems.forEach(item => {
-        ctx.fillStyle = item.color;
-        ctx.fillRect(legendX, legendY - 10, 12, 12);
-        
-        ctx.fillStyle = '#4a5568';
-        ctx.font = '14px -apple-system, sans-serif';
-        ctx.textAlign = 'left';
-        ctx.fillText(item.label, legendX + 20, legendY);
-        
-        legendX += ctx.measureText(item.label).width + 60;
+        const textWidth = ctx.measureText(item.label).width;
+        totalWidthNeeded += textWidth + 100; // 20px for box + 80px spacing
       });
 
-      // Chart title
+      const availableWidth = canvas.width - (padding * 2);
+      const needsTwoRows = totalWidthNeeded > availableWidth;
+
+      if (needsTwoRows) {
+        // Two row layout when not enough space
+        let legendX = padding;
+        let legendY = 25;
+        let itemsInCurrentRow = 0;
+        const maxItemsPerRow = 2;
+
+        legendItems.forEach((item, index) => {
+          if (itemsInCurrentRow >= maxItemsPerRow) {
+            legendX = padding;
+            legendY += 25;
+            itemsInCurrentRow = 0;
+          }
+
+          ctx.fillStyle = item.color;
+          ctx.fillRect(legendX, legendY - 10, 12, 12);
+          
+          ctx.fillStyle = '#4a5568';
+          ctx.font = '14px -apple-system, sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(item.label, legendX + 20, legendY);
+          
+          const textWidth = ctx.measureText(item.label).width;
+          legendX += textWidth + 100; // More space between items in two-row mode
+          itemsInCurrentRow++;
+        });
+      } else {
+        // Single row layout when enough space
+        let legendX = padding;
+        const legendY = 30;
+
+        legendItems.forEach(item => {
+          ctx.fillStyle = item.color;
+          ctx.fillRect(legendX, legendY - 10, 12, 12);
+          
+          ctx.fillStyle = '#4a5568';
+          ctx.font = '14px -apple-system, sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText(item.label, legendX + 20, legendY);
+          
+          const textWidth = ctx.measureText(item.label).width;
+          legendX += textWidth + 80;
+        });
+      }
+
+      // Chart title (positioned lower to account for potential two-row legend)
       ctx.fillStyle = '#2d3748';
       ctx.font = 'bold 16px -apple-system, sans-serif';
       ctx.textAlign = 'center';
-      const chartTitle = currentLanguage === 'de' ? '📈 Entwicklung der Bewertungen' : '📈 Development of Ratings';
-      ctx.fillText(chartTitle, canvas.width / 2, 20);
+      ctx.fillText(t('chartTitle'), canvas.width / 2, needsTwoRows ? 75 : 55);
     }
 
     // Export Functions
