@@ -348,6 +348,20 @@
       box-shadow: var(--shadow);
       min-height: 300px;
       position: relative;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .chart-wrapper {
+      min-width: 600px;
+      width: 100%;
+      position: relative;
+    }
+
+    #trendChart {
+      display: block;
+      width: 100%;
+      min-width: 600px;
     }
 
     .chart-tooltip {
@@ -516,6 +530,7 @@
     @media (max-width: 768px) {
       h1 {
         font-size: 2rem;
+        margin-top: 3rem;
       }
       
       .nav-buttons {
@@ -544,6 +559,24 @@
 
       .card {
         padding: 1.5rem;
+      }
+
+      .chart-container {
+        padding: 1rem;
+      }
+
+      #trendChart {
+        min-width: 500px;
+      }
+
+      .language-selector {
+        top: max(10px, env(safe-area-inset-top, 10px));
+        right: max(10px, env(safe-area-inset-right, 10px));
+      }
+
+      .language-toggle {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.8rem;
       }
     }
 
@@ -575,27 +608,30 @@
 
     .language-selector {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: max(20px, env(safe-area-inset-top, 20px));
+      right: max(20px, env(safe-area-inset-right, 20px));
       z-index: 1000;
     }
 
     .language-toggle {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       border: 1px solid rgba(102, 126, 234, 0.3);
       border-radius: 20px;
-      padding: 0.4rem 0.8rem;
+      padding: 0.5rem 0.9rem;
       font-size: 0.875rem;
       cursor: pointer;
       transition: all 0.2s ease;
       backdrop-filter: blur(10px);
       color: #667eea;
       font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      -webkit-tap-highlight-color: transparent;
     }
 
     .language-toggle:hover {
       background: rgba(102, 126, 234, 0.1);
       border-color: #667eea;
+      transform: translateY(-1px);
     }
 
     .language-toggle:active {
@@ -757,11 +793,13 @@
         </div>
 
         <div class="chart-container">
-          <canvas id="trendChart" width="800" height="400"></canvas>
-          <div id="chartTooltip" class="chart-tooltip">
-            <div class="tooltip-date"></div>
-            <div class="tooltip-values"></div>
-            <div class="tooltip-texts"></div>
+          <div class="chart-wrapper">
+            <canvas id="trendChart" width="800" height="400"></canvas>
+            <div id="chartTooltip" class="chart-tooltip">
+              <div class="tooltip-date"></div>
+              <div class="tooltip-values"></div>
+              <div class="tooltip-texts"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1258,11 +1296,21 @@
         }
       }
 
-      // Prepare data
+      // Prepare data and calculate optimal canvas width
       const zufriedenheitData = entries.map(e => e.zufriedenheit);
       const stressData = entries.map(e => e.stress);
       const teamData = entries.map(e => e.team);
       const grenzenData = entries.map(e => e.grenzen);
+
+      // Adjust canvas width based on number of entries for better spacing
+      const minWidth = 600;
+      const optimalWidth = Math.max(minWidth, entries.length * 80 + padding * 2);
+      canvas.width = optimalWidth;
+      canvas.style.width = optimalWidth + 'px';
+      
+      // Recalculate chart dimensions
+      const chartWidth = canvas.width - (padding * 2);
+      const chartHeight = canvas.height - (padding * 2);
 
       // Draw lines
       drawLine(zufriedenheitData, '#4ecdc4', 'Zufriedenheit');
