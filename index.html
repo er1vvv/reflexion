@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Wöchentliche Reflexion</title>
   
   <!-- PWA Meta Tags -->
@@ -11,18 +11,20 @@
   <meta name="apple-mobile-web-app-title" content="Reflexion">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#667eea">
-  <meta name="msapplication-TileColor" content="#667eea">
+  <meta name="description" content="Deine persönliche Reflexions-App für eine bessere Work-Life-Balance">
   
-  <!-- App Icons -->
+  <!-- Icons -->
   <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9InVybCgjZ3JhZGllbnQwX2xpbmVhcl8xXzEpIi8+CjxwYXRoIGQ9Ik05MCA0NUM2Ny45MDg2IDQ1IDUwIDYyLjkwODYgNTAgODVDNTAgMTA3LjA5MSA2Ny45MDg2IDEyNSA5MCAxMjVDMTEyLjA5MSAxMjUgMTMwIDEwNy4wOTEgMTMwIDg1QzEzMCA2Mi45MDg2IDExMi4wOTEgNDUgOTAgNDVaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNzUgODVMODUgOTVMMTA1IDc1IiBzdHJva2U9IiM2NjdlZWEiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfMV8xIiB4MT0iMCIgeTE9IjAiIHgyPSIxODAiIHkyPSIxODAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzY2N2VlYSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3NjRiYTIiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNncmFkaWVudDBfbGluZWFyXzFfMSkiLz4KPHBhdGggZD0iTTE2IDhDMTIuMTMgOCA5IDExLjEzIDkgMTVDOSAxOC44NyAxMi4xMyAyMiAxNiAyMkMxOS44NyAyMiAyMyAxOC44NyAyMyAxNUMyMyAxMS4xMyAxOS44NyA4IDE2IDhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTMgMTVMMTUgMTdMMTkgMTMiIHN0cm9rZT0iIzY2N2VlYSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQwX2xpbmVhcl8xXzEiIHgxPSIwIiB5MT0iMCIgeDI9IjMyIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzY2N2VlYSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3NjRiYTIiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K">
-  <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlXDnGNlaGVudGxpY2hlIFJlZmxleGlvbiIsCiAgInNob3J0X25hbWUiOiAiUmVmbGV4aW9uIiwKICAiZGVzY3JpcHRpb24iOiAiRGVpbmUgcGVyc8O2bmxpY2hlIFJlZmxleGlvbnMtQXBwIGbDvHIgZWluZSBiZXNzZXJlIFdvcmstTGlmZS1CYWxhbmNlIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiM2NjdlZWEiLAogICJ0aGVtZV9jb2xvciI6ICIjNjY3ZWVhIiwKICAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVGd3SWlCb1pXbG5hSFE5SWpFNE1DSWlJSFpwWlhkQ2IzZzlJakFnTUNBeE9EQWdNVGd3SWlCbWFXeHNQU0p1YjI1bElpQjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaVBnbzhjbVZqZENCM2FXUjBhRDBpTVRnd0lpQm9aV2xuYUhROU1UZ3dJaUJ5ZUQwaU5EQWlJR1pwYkd3OUluVnliQ2duSjJkeVlXUnBaVzUwTUY5c2FXNWxZWEpmTVY4eEtTY3ZQZ284Y0dGMGFDQmtQU0pOT1RBZ05EVkROamN1T1RBNE5pQTBOU0ExTUNBMk1pNDVNRGcySURVd0lEZzFRell3SURFd055NDFJRGMySURFeU5TQTVNQ0F4TWpWRE1URXlMakE1TVRFNU5VQXhNekFnTVRBM0xqQTVNVEU0TUVBNFpWSXpNQ0EyTWk1NU1EZzJJREV4TWk0d09URWdORFpKSWlCbWFXeHNQU0ozYUdsMFpTSXZQZ284Y0dGMGFDQmtQU0pOTnpVZ09EVkROVGdpSURFNE9DSjVUREV3TlNBM05TSWdjM1J5YjJ0bFBTSWpOalkzWldWaElpQnpkSEp2YTJVdGQybGtkR2c5SWpVaUlITjBjbTlyWlMxc2FXNWxZMkZ3UFNJM2NtOTFibVFpSUhOMGNtOXJaUzFzYVc1bGFtOXBianBpWW1GdWNtOTFibVFpTHo0OFpHVm1jejQ4YkdsdVpXRnlSM0poWkdsbGJuUWdhV1E5SWlkbmNtRmthV1Z1ZERCZmJHbHVaV0Z5WDJWOE1WOHhJaUI0TVQASURVZ0lTNHdJaUI0TVYxaU1UWXVPU0lnZVRGSVFqVXRNVGcwUTJkeVlXUnBaVzUwVlc1cGRITTlJblZ6WlhKVGNHRmpaVTl1VlhObElqNG5jR3hwY0RGOFNnQmpTa1F5VlVScFpVZDBVVzlJVGxSQU1WNkJkQ1ZkYW1sYVdYOHhJSE4wYjNBSWMzUnZjQzFqYjJ4dmNqMGlJM1kyTjJWbFlTSWdMejQ4YzNSdmNDQnZabVp6WlhROElqRWlJSE4wYjNBdFkyOXNiM0k5SWlNM05qUmlZVElpTHo0OEwyeHBibVZoY2tkeVlXUnBaVzUwUGdvOEwyUmxabk0rUGdvOEwzTjJaejRLIn0KICBdCn0=">
+  <link rel="manifest" href="manifest.json">
+
   <style>
     :root {
       --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
       --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
       --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      --danger-gradient: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
       --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --card-bg: rgba(255, 255, 255, 0.95);
       --text-primary: #2d3748;
@@ -39,11 +41,15 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       background: var(--bg-gradient);
       min-height: 100vh;
-      padding: 2rem 1rem;
+      padding: 1rem;
       color: var(--text-primary);
+      padding-top: max(1rem, env(safe-area-inset-top));
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
     }
 
     .container {
@@ -58,6 +64,7 @@
       color: white;
       margin-bottom: 2rem;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeInDown 0.8s ease-out;
     }
 
     h2 {
@@ -87,6 +94,8 @@
       letter-spacing: 0.5px;
       position: relative;
       overflow: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .btn-primary {
@@ -114,7 +123,7 @@
     }
 
     .btn-danger {
-      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+      background: var(--danger-gradient);
       color: white;
       box-shadow: var(--shadow);
     }
@@ -135,6 +144,7 @@
       box-shadow: var(--shadow-lg);
       backdrop-filter: blur(10px);
       border: 1px solid var(--border-color);
+      animation: fadeInUp 0.6s ease-out;
     }
 
     .form-group {
@@ -149,7 +159,6 @@
       color: var(--text-primary);
     }
 
-    /* Slider Styles */
     .slider-container {
       position: relative;
       margin: 1rem 0;
@@ -158,8 +167,8 @@
     .slider {
       -webkit-appearance: none;
       width: 100%;
-      height: 8px;
-      border-radius: 5px;
+      height: 12px;
+      border-radius: 6px;
       background: linear-gradient(90deg, #ff6b6b 0%, #ffa500 50%, #4ecdc4 100%);
       outline: none;
       opacity: 0.8;
@@ -173,8 +182,8 @@
     .slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 25px;
-      height: 25px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: white;
       cursor: pointer;
@@ -189,8 +198,8 @@
     }
 
     .slider::-moz-range-thumb {
-      width: 25px;
-      height: 25px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: white;
       cursor: pointer;
@@ -222,13 +231,13 @@
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.3s ease;
+      z-index: 10;
     }
 
     .slider-value.show {
       opacity: 1;
     }
 
-    /* Custom Select Styles */
     .custom-select {
       position: relative;
       display: inline-block;
@@ -258,7 +267,6 @@
       box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
-    /* Textarea Styles */
     .form-textarea {
       width: 100%;
       padding: 0.75rem 1rem;
@@ -281,7 +289,6 @@
       color: #a0aec0;
     }
 
-    /* Button Group */
     .button-group {
       display: flex;
       gap: 1rem;
@@ -297,7 +304,6 @@
       justify-content: center;
     }
 
-    /* Table Styles */
     .table-container {
       overflow-x: auto;
       border-radius: 12px;
@@ -334,145 +340,128 @@
       background: rgba(102, 126, 234, 0.05);
     }
 
-    /* Chart Container */
     .chart-container {
       background: white;
       border-radius: 12px;
       padding: 1.5rem;
       margin-top: 2rem;
       box-shadow: var(--shadow);
+      min-height: 300px;
     }
 
-    /* Empty State */
     .empty-state {
       text-align: center;
       padding: 3rem;
       color: var(--text-secondary);
     }
 
-    .empty-state svg {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 1rem;
-      opacity: 0.5;
+    .trend-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
     }
 
-    /* PWA Styles */
-    .pwa-install-banner {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      background: var(--primary-gradient);
-      color: white;
-      padding: 1rem;
+    .trend-card {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
       border-radius: 12px;
-      box-shadow: var(--shadow-lg);
-      display: none;
-      z-index: 1000;
+      padding: 1.5rem;
       text-align: center;
+      border: 1px solid rgba(102, 126, 234, 0.2);
+      transition: transform 0.2s ease;
     }
 
-    .pwa-install-banner.show {
-      display: block;
-      animation: slideInUp 0.3s ease-out;
+    .trend-card:hover {
+      transform: translateY(-2px);
     }
 
-    @keyframes slideInUp {
-      from {
-        transform: translateY(100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    .trend-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #667eea;
+      margin-bottom: 0.5rem;
     }
 
-    .pwa-banner-content {
+    .trend-label {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .chart-placeholder {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .pwa-banner-text {
-      flex: 1;
-      text-align: left;
-    }
-
-    .pwa-banner-text h3 {
-      margin: 0 0 0.25rem 0;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .pwa-banner-text p {
-      margin: 0;
-      font-size: 0.875rem;
-      opacity: 0.9;
-    }
-
-    .pwa-banner-buttons {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .pwa-btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .pwa-btn-install {
-      background: white;
+      justify-content: center;
+      min-height: 200px;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+      border-radius: 12px;
       color: #667eea;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 2rem 0;
     }
 
-    .pwa-btn-close {
-      background: rgba(255, 255, 255, 0.2);
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--success-gradient);
       color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.3s ease;
+      z-index: 1000;
     }
 
-    .pwa-btn:hover {
-      transform: translateY(-1px);
+    .notification.show {
+      opacity: 1;
+      transform: translateX(0);
     }
 
-    /* iOS specific styles */
-    @supports (-webkit-touch-callout: none) {
-      body {
-        padding-bottom: env(safe-area-inset-bottom);
-        padding-top: env(safe-area-inset-top);
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-      
-      .container {
-        padding-left: max(1rem, env(safe-area-inset-left));
-        padding-right: max(1rem, env(safe-area-inset-right));
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    /* Standalone app styles */
-    @media (display-mode: standalone) {
-      body {
-        user-select: none;
-        -webkit-user-select: none;
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
       }
-      
-      .nav-buttons {
-        padding-top: 1rem;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .pulse {
+      animation: pulse 0.6s ease-in-out;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      .container {
-        padding: 0 1rem;
-      }
-      
       h1 {
         font-size: 2rem;
       }
@@ -497,47 +486,55 @@
         align-items: center;
       }
 
-      .pwa-banner-content {
-        flex-direction: column;
-        text-align: center;
+      .trend-summary {
+        grid-template-columns: 1fr;
       }
 
-      .pwa-banner-text {
-        text-align: center;
+      .card {
+        padding: 1.5rem;
       }
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .card {
+        background: rgba(45, 55, 72, 0.95);
+        color: white;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      .form-textarea, .custom-select select {
+        background: rgba(74, 85, 104, 0.8);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      table {
+        background: rgba(45, 55, 72, 0.95);
+      }
+
+      td {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .chart-container {
+        background: rgba(45, 55, 72, 0.95);
       }
     }
 
-    .fade-in-up {
-      animation: fadeInUp 0.6s ease-out;
-    }
-
-    /* Success Animation */
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
+    /* iOS specific improvements */
+    @supports (-webkit-touch-callout: none) {
+      .btn {
+        -webkit-tap-highlight-color: transparent;
       }
-      50% {
-        transform: scale(1.05);
+      
+      .slider {
+        height: 16px;
       }
-      100% {
-        transform: scale(1);
+      
+      .slider::-webkit-slider-thumb {
+        width: 32px;
+        height: 32px;
       }
-    }
-
-    .pulse {
-      animation: pulse 0.6s ease-in-out;
     }
   </style>
 </head>
@@ -551,7 +548,7 @@
     </div>
 
     <!-- Formular-Ansicht -->
-    <section id="formSection" class="fade-in-up">
+    <section id="formSection">
       <div class="card">
         <h2>Wie war deine Woche?</h2>
         <form id="reflectionForm">
@@ -642,7 +639,7 @@
     </section>
 
     <!-- Übersicht-Ansicht -->
-    <section id="overviewSection" style="display:none;" class="fade-in-up">
+    <section id="overviewSection" style="display:none;">
       <div class="card">
         <h2>📈 Deine Reflexions-Übersicht</h2>
         
@@ -653,6 +650,8 @@
           <input type="file" id="fileInput" accept="application/json" style="display:none;" />
           <button id="btnClearAll" class="btn btn-danger">🗑️ Alle löschen</button>
         </div>
+
+        <div id="trendSummary" class="trend-summary"></div>
 
         <div class="table-container">
           <table id="entriesTable">
@@ -674,111 +673,24 @@
         </div>
 
         <div class="chart-container">
-          <canvas id="trendChart"></canvas>
+          <div class="chart-placeholder">
+            📈 Visueller Trend-Chart<br>
+            <small>Zeigt die Entwicklung deiner Bewertungen über die Zeit</small>
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- PWA Install Banner -->
-    <div id="pwaInstallBanner" class="pwa-install-banner">
-      <div class="pwa-banner-content">
-        <div class="pwa-banner-text">
-          <h3>📱 App installieren</h3>
-          <p>Installiere die Reflexions-App für einen schnelleren Zugriff!</p>
-        </div>
-        <div class="pwa-banner-buttons">
-          <button id="pwaInstallBtn" class="pwa-btn pwa-btn-install">Installieren</button>
-          <button id="pwaCloseBtn" class="pwa-btn pwa-btn-close">×</button>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <!-- Notification -->
+  <div id="notification" class="notification">
+    <span id="notificationText"></span>
+  </div>
 
   <script>
-    // PWA Installation
-    let deferredPrompt;
-    const pwaInstallBanner = document.getElementById('pwaInstallBanner');
-    const pwaInstallBtn = document.getElementById('pwaInstallBtn');
-    const pwaCloseBtn = document.getElementById('pwaCloseBtn');
-
-    // Check if app is already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      // App is already installed, don't show banner
-      pwaInstallBanner.style.display = 'none';
-    }
-
-    // Listen for beforeinstallprompt event
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      
-      // Show install banner after a delay
-      setTimeout(() => {
-        if (!window.matchMedia('(display-mode: standalone)').matches) {
-          pwaInstallBanner.classList.add('show');
-        }
-      }, 3000);
-    });
-
-    // Handle install button click
-    pwaInstallBtn.addEventListener('click', async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        
-        if (outcome === 'accepted') {
-          console.log('PWA installiert');
-        }
-        
-        deferredPrompt = null;
-        pwaInstallBanner.classList.remove('show');
-      }
-    });
-
-    // Handle close button
-    pwaCloseBtn.addEventListener('click', () => {
-      pwaInstallBanner.classList.remove('show');
-      // Don't show again for this session
-      sessionStorage.setItem('pwa-banner-dismissed', 'true');
-    });
-
-    // Don't show banner if dismissed in this session
-    if (sessionStorage.getItem('pwa-banner-dismissed')) {
-      pwaInstallBanner.style.display = 'none';
-    }
-
-    // iOS Safari specific detection and instructions
-    function isIOS() {
-      return /iPad|iPhone|iPod/.test(navigator.userAgent);
-    }
-
-    function isInStandaloneMode() {
-      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-    }
-
-    // Show iOS specific install instructions
-    if (isIOS() && !isInStandaloneMode() && !sessionStorage.getItem('ios-install-shown')) {
-      setTimeout(() => {
-        const iosInstallMsg = `
-          📱 Installiere diese App auf deinem iPhone:
-          
-          1. Tippe auf das Teilen-Symbol unten ⬆️
-          2. Wähle "Zum Home-Bildschirm" 📲
-          3. Tippe "Hinzufügen" ✅
-          
-          So hast du schnellen Zugriff auf deine Reflexionen!
-        `;
-        
-        if (confirm(iosInstallMsg)) {
-          sessionStorage.setItem('ios-install-shown', 'true');
-        }
-      }, 5000);
-    }
-
-    // In-Memory Storage
+    // Global Variables
     let reflectionData = [];
+    const STORAGE_KEY = 'reflexionsDaten';
 
     // DOM Elements
     const formSection = document.getElementById('formSection');
@@ -788,7 +700,20 @@
     const form = document.getElementById('reflectionForm');
     const tbody = document.querySelector('#entriesTable tbody');
 
-    // Slider value displays
+    // Utility Functions
+    function showNotification(message, type = 'success') {
+      const notification = document.getElementById('notification');
+      const notificationText = document.getElementById('notificationText');
+      
+      notificationText.textContent = message;
+      notification.className = `notification show ${type}`;
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+
+    // Slider Management
     const sliders = ['zufriedenheit', 'stress', 'team', 'grenzen'];
     sliders.forEach(sliderId => {
       const slider = document.getElementById(sliderId);
@@ -805,13 +730,20 @@
       });
       
       slider.addEventListener('mouseenter', () => {
-        const valueDisplay = document.getElementById(sliderId + 'Value');
         valueDisplay.classList.add('show');
       });
       
       slider.addEventListener('mouseleave', () => {
-        const valueDisplay = document.getElementById(sliderId + 'Value');
         valueDisplay.classList.remove('show');
+      });
+
+      // Touch events for mobile
+      slider.addEventListener('touchstart', () => {
+        valueDisplay.classList.add('show');
+      });
+      
+      slider.addEventListener('touchend', () => {
+        setTimeout(() => valueDisplay.classList.remove('show'), 1000);
       });
     });
 
@@ -829,19 +761,34 @@
       btnOverview.classList.add('pulse');
       setTimeout(() => btnOverview.classList.remove('pulse'), 600);
       renderTable();
-      renderChart();
+      renderTrendSummary();
     });
 
-    // Data management
+    // Data Management
     function loadEntries() {
-      return reflectionData;
+      try {
+        const json = localStorage.getItem(STORAGE_KEY);
+        return json ? JSON.parse(json) : [];
+      } catch (error) {
+        console.error('Error loading data:', error);
+        return [];
+      }
     }
 
     function saveEntries(entries) {
-      reflectionData = entries;
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+        reflectionData = entries;
+      } catch (error) {
+        console.error('Error saving data:', error);
+        showNotification('Fehler beim Speichern!', 'error');
+      }
     }
 
-    // Form submission
+    // Initialize data
+    reflectionData = loadEntries();
+
+    // Form Submission
     form.addEventListener('submit', e => {
       e.preventDefault();
       const formData = new FormData(form);
@@ -868,16 +815,8 @@
       submitBtn.classList.add('pulse');
       setTimeout(() => submitBtn.classList.remove('pulse'), 600);
 
-      // Show success message with emoji
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = '✅ Gespeichert!';
-      submitBtn.style.background = 'var(--warning-gradient)';
+      showNotification('✅ Eintrag erfolgreich gespeichert!');
       
-      setTimeout(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.style.background = 'var(--success-gradient)';
-      }, 2000);
-
       form.reset();
       
       // Reset sliders to default
@@ -889,7 +828,7 @@
       });
     });
 
-    // Table rendering
+    // Table Rendering
     function renderTable() {
       const entries = loadEntries();
       tbody.innerHTML = '';
@@ -899,9 +838,6 @@
           <tr>
             <td colspan="9" class="empty-state">
               <div>
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
                 <p>Noch keine Einträge vorhanden.</p>
                 <p>Fülle den ersten Fragebogen aus! 🚀</p>
               </div>
@@ -910,6 +846,9 @@
         `;
         return;
       }
+      
+      // Sort by date (newest first)
+      entries.sort((a, b) => new Date(b.datum) - new Date(a.datum));
       
       entries.forEach(e => {
         const tr = document.createElement('tr');
@@ -928,111 +867,50 @@
       });
     }
 
-    // Chart rendering
-    let chartInstance = null;
-
-    function renderChart() {
+    // Trend Summary
+    function renderTrendSummary() {
       const entries = loadEntries();
-      
-      if (chartInstance) {
-        chartInstance.destroy();
-      }
+      const summaryContainer = document.getElementById('trendSummary');
       
       if (entries.length === 0) {
-        document.getElementById('trendChart').style.display = 'none';
+        summaryContainer.innerHTML = '';
         return;
       }
-      
-      document.getElementById('trendChart').style.display = 'block';
-      entries.sort((a,b) => new Date(a.datum) - new Date(b.datum));
 
-      const labels = entries.map(e => e.datum);
-      const dataZufriedenheit = entries.map(e => e.zufriedenheit);
-      const dataStress = entries.map(e => e.stress);
-      const dataTeam = entries.map(e => e.team !== null ? e.team : null);
-      const dataGrenzen = entries.map(e => e.grenzen !== null ? e.grenzen : null);
+      const avgZufriedenheit = entries.reduce((sum, e) => sum + e.zufriedenheit, 0) / entries.length;
+      const avgStress = entries.reduce((sum, e) => sum + e.stress, 0) / entries.length;
+      const teamEntries = entries.filter(e => e.team !== null);
+      const avgTeam = teamEntries.length > 0 ? teamEntries.reduce((sum, e) => sum + e.team, 0) / teamEntries.length : 0;
+      const grenzenEntries = entries.filter(e => e.grenzen !== null);
+      const avgGrenzen = grenzenEntries.length > 0 ? grenzenEntries.reduce((sum, e) => sum + e.grenzen, 0) / grenzenEntries.length : 0;
+      const positivWeeks = entries.filter(e => e.fazit === 'positiv').length;
+      const totalWeeks = entries.length;
 
-      const ctx = document.getElementById('trendChart').getContext('2d');
-      chartInstance = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels,
-          datasets: [
-            {
-              label: '😊 Zufriedenheit',
-              data: dataZufriedenheit,
-              borderColor: '#4ecdc4',
-              backgroundColor: 'rgba(78, 205, 196, 0.1)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.4,
-              pointRadius: 6,
-              pointHoverRadius: 8
-            },
-            {
-              label: '😰 Stress',
-              data: dataStress,
-              borderColor: '#ff6b6b',
-              backgroundColor: 'rgba(255, 107, 107, 0.1)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.4,
-              pointRadius: 6,
-              pointHoverRadius: 8
-            },
-            {
-              label: '🤝 Team',
-              data: dataTeam,
-              borderColor: '#667eea',
-              backgroundColor: 'rgba(102, 126, 234, 0.1)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.4,
-              pointRadius: 6,
-              pointHoverRadius: 8,
-              spanGaps: true
-            },
-            {
-              label: '✅ Grenzen',
-              data: dataGrenzen,
-              borderColor: '#ffa500',
-              backgroundColor: 'rgba(255, 165, 0, 0.1)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.4,
-              pointRadius: 6,
-              pointHoverRadius: 8,
-              spanGaps: true
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: true,
-              position: 'top',
-              labels: {
-                usePointStyle: true,
-                pointStyle: 'circle',
-                padding: 20,
-                font: {
-                  size: 14,
-                  weight: 'bold'
-                }
-              }
-            }
-          }
-        }
-      });
+      summaryContainer.innerHTML = `
+        <div class="trend-card">
+          <div class="trend-value">${avgZufriedenheit.toFixed(1)}</div>
+          <div class="trend-label">⭐ Durchschnittliche Zufriedenheit</div>
+        </div>
+        <div class="trend-card">
+          <div class="trend-value">${avgStress.toFixed(1)}</div>
+          <div class="trend-label">😤 Durchschnittlicher Stress</div>
+        </div>
+        <div class="trend-card">
+          <div class="trend-value">${avgTeam ? avgTeam.toFixed(1) : '—'}</div>
+          <div class="trend-label">🤝 Team-Zusammenarbeit</div>
+        </div>
+        <div class="trend-card">
+          <div class="trend-value">${Math.round(positivWeeks / totalWeeks * 100)}%</div>
+          <div class="trend-label">🌟 Positive Wochen</div>
+        </div>
+      `;
     }
 
-    // Export functions with better mobile UX
+    // Export Functions
     function downloadFile(content, filename, contentType) {
       const blob = new Blob([content], { type: contentType });
       
-      // For mobile devices, try to use the native share API
+      // Try native share API first (mobile)
       if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
         const file = new File([blob], filename, { type: contentType });
         
@@ -1043,7 +921,6 @@
             text: 'Hier ist dein Reflexions-Export!'
           }).catch(err => {
             console.log('Share failed:', err);
-            // Fallback to download
             fallbackDownload(blob, filename);
           });
           return;
@@ -1063,64 +940,141 @@
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-    },
-                  weight: 'bold'
-                }
+    }
+
+    // CSV Export
+    document.getElementById('btnExportCSV').addEventListener('click', () => {
+      const entries = loadEntries();
+      if (entries.length === 0) {
+        showNotification('Keine Einträge zum Exportieren.', 'error');
+        return;
+      }
+      
+      const header = ['Datum', 'Zufriedenheit', 'Stress', 'Erfolge', 'Herausforderungen', 'Team', 'Wertschätzung', 'Grenzen', 'Fazit'];
+      const csvRows = [header.join(',')];
+
+      entries.forEach(e => {
+        const row = [
+          e.datum,
+          e.zufriedenheit,
+          e.stress,
+          `"${e.erfolge.replace(/"/g, '""')}"`,
+          `"${e.herausforderungen.replace(/"/g, '""')}"`,
+          e.team !== null ? e.team : '',
+          e.wertschaetzung,
+          e.grenzen !== null ? e.grenzen : '',
+          e.fazit
+        ];
+        csvRows.push(row.join(','));
+      });
+
+      const csvString = csvRows.join('\n');
+      const filename = `reflexion_export_${new Date().toISOString().slice(0, 10)}.csv`;
+      
+      downloadFile(csvString, filename, 'text/csv;charset=utf-8;');
+      showNotification('📊 CSV Export erfolgreich!');
+    });
+
+    // JSON Backup Export
+    document.getElementById('btnBackupJSON').addEventListener('click', () => {
+      const entries = loadEntries();
+      if (entries.length === 0) {
+        showNotification('Keine Einträge zum Sichern.', 'error');
+        return;
+      }
+      
+      const jsonStr = JSON.stringify(entries, null, 2);
+      const filename = `reflexion_backup_${new Date().toISOString().slice(0, 10)}.json`;
+      
+      downloadFile(jsonStr, filename, 'application/json');
+      showNotification('💾 Backup erfolgreich erstellt!');
+    });
+
+    // JSON Backup Import
+    const fileInput = document.getElementById('fileInput');
+    document.getElementById('btnImportJSON').addEventListener('click', () => {
+      fileInput.value = '';
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = event => {
+        try {
+          const importedData = JSON.parse(event.target.result);
+          if (!Array.isArray(importedData)) throw new Error('Ungültiges Format');
+          
+          // Validate data structure
+          const isValid = importedData.every(entry => 
+            entry.hasOwnProperty('datum') && 
+            entry.hasOwnProperty('zufriedenheit') && 
+            entry.hasOwnProperty('stress')
+          );
+          
+          if (!isValid) throw new Error('Ungültige Datenstruktur');
+          
+          saveEntries(importedData);
+          showNotification('📂 Backup erfolgreich importiert!');
+          
+          if (overviewSection.style.display === 'block') {
+            renderTable();
+            renderTrendSummary();
+          }
+        } catch (err) {
+          showNotification('Fehler beim Importieren: ' + err.message, 'error');
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    // Clear All Data
+    document.getElementById('btnClearAll').addEventListener('click', () => {
+      if (confirm('Wirklich alle Einträge löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) {
+        localStorage.removeItem(STORAGE_KEY);
+        reflectionData = [];
+        showNotification('🗑️ Alle Einträge wurden gelöscht.');
+        renderTable();
+        renderTrendSummary();
+      }
+    });
+
+    // Initialize App
+    function initApp() {
+      // Load data on startup
+      reflectionData = loadEntries();
+      
+      // Show form initially
+      btnForm.click();
+      
+      // Add keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey || e.metaKey) {
+          switch (e.key) {
+            case 's':
+              e.preventDefault();
+              if (formSection.style.display !== 'none') {
+                form.dispatchEvent(new Event('submit', { cancelable: true }));
               }
-            },
-            tooltip: {
-              mode: 'index',
-              intersect: false,
-              backgroundColor: 'rgba(0, 0, 0, 0.8)',
-              titleColor: 'white',
-              bodyColor: 'white',
-              borderColor: '#667eea',
-              borderWidth: 1,
-              cornerRadius: 8,
-              displayColors: true
-            }
-          },
-          interaction: {
-            mode: 'index',
-            intersect: false
-          },
-          scales: {
-            y: {
-              min: 0,
-              max: 10,
-              ticks: {
-                stepSize: 1,
-                color: '#718096',
-                font: {
-                  size: 12
-                }
-              },
-              grid: {
-                color: 'rgba(113, 128, 150, 0.1)'
-              },
-              title: {
-                display: true,
-                text: 'Bewertung (1-10)',
-                color: '#2d3748',
-                font: {
-                  size: 14,
-                  weight: 'bold'
-                }
-              }
-            },
-            x: {
-              ticks: {
-                color: '#718096',
-                font: {
-                  size: 12
-                }
-              },
-              grid: {
-                color: 'rgba(113, 128, 150, 0.1)'
-              },
-              title: {
-                display: true,
-                text: 'Datum',
-                color: '#2d3748',
-                font: {
-                  size: 14
+              break;
+            case '1':
+              e.preventDefault();
+              btnForm.click();
+              break;
+            case '2':
+              e.preventDefault();
+              btnOverview.click();
+              break;
+          }
+        }
+      });
+    }
+
+    // Start the app
+    initApp();
+  </script>
+</body>
+</html>
+    
