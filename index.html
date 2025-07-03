@@ -347,6 +347,58 @@
       margin-top: 2rem;
       box-shadow: var(--shadow);
       min-height: 300px;
+      position: relative;
+    }
+
+    .chart-tooltip {
+      position: absolute;
+      background: rgba(45, 55, 72, 0.95);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow-lg);
+      font-size: 0.875rem;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 100;
+      max-width: 300px;
+      backdrop-filter: blur(10px);
+    }
+
+    .chart-tooltip.show {
+      opacity: 1;
+    }
+
+    .tooltip-date {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #4ecdc4;
+    }
+
+    .tooltip-values {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .tooltip-value {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tooltip-texts {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .tooltip-text {
+      margin-bottom: 0.5rem;
+    }
+
+    .tooltip-text strong {
+      color: #ffa500;
     }
 
     .empty-state {
@@ -521,7 +573,34 @@
       }
     }
 
-    /* iOS specific improvements */
+    .language-selector {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .language-toggle {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      border-radius: 20px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(10px);
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .language-toggle:hover {
+      background: rgba(102, 126, 234, 0.1);
+      border-color: #667eea;
+    }
+
+    .language-toggle:active {
+      transform: scale(0.95);
+    }
     @supports (-webkit-touch-callout: none) {
       .btn {
         -webkit-tap-highlight-color: transparent;
@@ -540,7 +619,12 @@
 </head>
 <body>
   <div class="container">
-    <h1>✨ Wöchentliche Reflexion ✨</h1>
+    <!-- Language Selector -->
+    <div class="language-selector">
+      <button id="languageToggle" class="language-toggle">🇺🇸 EN</button>
+    </div>
+
+    <h1 id="mainTitle">✨ Wöchentliche Reflexion ✨</h1>
 
     <div class="nav-buttons">
       <button id="btnForm" class="btn btn-primary">📝 Fragebogen ausfüllen</button>
@@ -674,6 +758,11 @@
 
         <div class="chart-container">
           <canvas id="trendChart" width="800" height="400"></canvas>
+          <div id="chartTooltip" class="chart-tooltip">
+            <div class="tooltip-date"></div>
+            <div class="tooltip-values"></div>
+            <div class="tooltip-texts"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -685,6 +774,201 @@
   </div>
 
   <script>
+    // Language System
+    let currentLanguage = 'de';
+    
+    const translations = {
+      de: {
+        mainTitle: '✨ Wöchentliche Reflexion ✨',
+        btnForm: '📝 Fragebogen ausfüllen',
+        btnOverview: '📊 Übersicht & Statistik',
+        formTitle: 'Wie war deine Woche?',
+        satisfaction: 'Allgemeine Zufriedenheit',
+        stress: 'Stresslevel',
+        successes: '🎉 Besondere Erfolge & Highlights',
+        successesPlaceholder: 'Was lief diese Woche besonders gut? Worauf bist du stolz?',
+        challenges: '💭 Herausforderungen & Lernmomente',
+        challengesPlaceholder: 'Welche Situationen waren herausfordernd? Was hast du daraus gelernt?',
+        teamwork: 'Zusammenarbeit im Team',
+        appreciation: '💝 Fühlte ich mich wertgeschätzt?',
+        boundaries: 'Eigene Bedürfnisse & Grenzen gewahrt',
+        summary: '🎯 Gesamtfazit der Woche',
+        btnSave: '💾 Eintrag speichern',
+        btnReset: '🔄 Zurücksetzen',
+        overviewTitle: '📈 Deine Reflexions-Übersicht',
+        btnExportCSV: '📊 Export als CSV',
+        btnBackup: '💾 Backup exportieren',
+        btnImport: '📂 Backup importieren',
+        btnClearAll: '🗑️ Alle löschen',
+        veryDissatisfied: '😞 Sehr unzufrieden',
+        verySatisfied: '😊 Sehr zufrieden',
+        veryRelaxed: '😌 Sehr entspannt',
+        veryStressed: '😰 Sehr gestresst',
+        difficult: '🤝 Schwierig',
+        excellent: '🌟 Hervorragend',
+        notAtAll: '🚫 Gar nicht',
+        completely: '✅ Vollständig',
+        yesDefinitely: '✅ Ja, definitiv',
+        noUnfortunately: '❌ Nein, leider nicht',
+        positive: '🌟 Positiv',
+        negative: '😔 Negativ',
+        avgSatisfaction: '⭐ Durchschnittliche Zufriedenheit',
+        avgStress: '😤 Durchschnittlicher Stress',
+        avgTeam: '🤝 Team-Zusammenarbeit',
+        positiveWeeks: '🌟 Positive Wochen',
+        savedSuccess: '✅ Eintrag erfolgreich gespeichert!',
+        noEntries: 'Keine Einträge zum Exportieren.',
+        exportSuccess: '📊 CSV Export erfolgreich!',
+        backupSuccess: '💾 Backup erfolgreich erstellt!',
+        importSuccess: '📂 Backup erfolgreich importiert!',
+        deletedSuccess: '🗑️ Alle Einträge wurden gelöscht.',
+        confirmDelete: 'Wirklich alle Einträge löschen? Diese Aktion kann nicht rückgängig gemacht werden.',
+        emptyStateText: 'Noch keine Einträge vorhanden.',
+        emptyStateSubtext: 'Fülle den ersten Fragebogen aus! 🚀',
+        chartTitle: '📈 Entwicklung deiner Bewertungen',
+        chartEmpty: '📈 Fülle Einträge aus, um Trends zu sehen',
+        satisfactionChart: '😊 Zufriedenheit',
+        stressChart: '😰 Stress',
+        teamChart: '🤝 Team',
+        boundariesChart: '✅ Grenzen'
+      },
+      en: {
+        mainTitle: '✨ Weekly Reflection ✨',
+        btnForm: '📝 Fill out questionnaire',
+        btnOverview: '📊 Overview & Statistics',
+        formTitle: 'How was your week?',
+        satisfaction: 'General satisfaction',
+        stress: 'Stress level',
+        successes: '🎉 Special successes & highlights',
+        successesPlaceholder: 'What went particularly well this week? What are you proud of?',
+        challenges: '💭 Challenges & learning moments',
+        challengesPlaceholder: 'Which situations were challenging? What did you learn from them?',
+        teamwork: 'Teamwork',
+        appreciation: '💝 Did I feel appreciated?',
+        boundaries: 'Own needs & boundaries maintained',
+        summary: '🎯 Overall summary of the week',
+        btnSave: '💾 Save entry',
+        btnReset: '🔄 Reset',
+        overviewTitle: '📈 Your reflection overview',
+        btnExportCSV: '📊 Export as CSV',
+        btnBackup: '💾 Export backup',
+        btnImport: '📂 Import backup',
+        btnClearAll: '🗑️ Delete all',
+        veryDissatisfied: '😞 Very dissatisfied',
+        verySatisfied: '😊 Very satisfied',
+        veryRelaxed: '😌 Very relaxed',
+        veryStressed: '😰 Very stressed',
+        difficult: '🤝 Difficult',
+        excellent: '🌟 Excellent',
+        notAtAll: '🚫 Not at all',
+        completely: '✅ Completely',
+        yesDefinitely: '✅ Yes, definitely',
+        noUnfortunately: '❌ No, unfortunately not',
+        positive: '🌟 Positive',
+        negative: '😔 Negative',
+        avgSatisfaction: '⭐ Average satisfaction',
+        avgStress: '😤 Average stress',
+        avgTeam: '🤝 Teamwork',
+        positiveWeeks: '🌟 Positive weeks',
+        savedSuccess: '✅ Entry saved successfully!',
+        noEntries: 'No entries to export.',
+        exportSuccess: '📊 CSV export successful!',
+        backupSuccess: '💾 Backup created successfully!',
+        importSuccess: '📂 Backup imported successfully!',
+        deletedSuccess: '🗑️ All entries have been deleted.',
+        confirmDelete: 'Really delete all entries? This action cannot be undone.',
+        emptyStateText: 'No entries available yet.',
+        emptyStateSubtext: 'Fill out the first questionnaire! 🚀',
+        chartTitle: '📈 Development of your ratings',
+        chartEmpty: '📈 Fill out entries to see trends',
+        satisfactionChart: '😊 Satisfaction',
+        stressChart: '😰 Stress',
+        teamChart: '🤝 Team',
+        boundariesChart: '✅ Boundaries'
+      }
+    };
+
+    function updateLanguage() {
+      const t = translations[currentLanguage];
+      
+      // Update all text elements
+      document.getElementById('mainTitle').textContent = t.mainTitle;
+      document.getElementById('btnForm').textContent = t.btnForm;
+      document.getElementById('btnOverview').textContent = t.btnOverview;
+      document.querySelector('#formSection h2').textContent = t.formTitle;
+      document.querySelector('label[for="zufriedenheit"]').textContent = t.satisfaction;
+      document.querySelector('label[for="stress"]').textContent = t.stress;
+      document.querySelector('label[for="erfolge"]').textContent = t.successes;
+      document.querySelector('label[for="herausforderungen"]').textContent = t.challenges;
+      document.querySelector('label[for="team"]').textContent = t.teamwork;
+      document.querySelector('label[for="wertschaetzung"]').textContent = t.appreciation;
+      document.querySelector('label[for="grenzen"]').textContent = t.boundaries;
+      document.querySelector('label[for="fazit"]').textContent = t.summary;
+      document.querySelector('button[type="submit"]').textContent = t.btnSave;
+      document.querySelector('button[type="reset"]').textContent = t.btnReset;
+      document.querySelector('#overviewSection h2').textContent = t.overviewTitle;
+      document.getElementById('btnExportCSV').textContent = t.btnExportCSV;
+      document.getElementById('btnBackupJSON').textContent = t.btnBackup;
+      document.getElementById('btnImportJSON').textContent = t.btnImport;
+      document.getElementById('btnClearAll').textContent = t.btnClearAll;
+      
+      // Update placeholders
+      document.getElementById('erfolge').placeholder = t.successesPlaceholder;
+      document.getElementById('herausforderungen').placeholder = t.challengesPlaceholder;
+      
+      // Update slider labels
+      const sliderLabels = document.querySelectorAll('.slider-labels');
+      if (sliderLabels[0]) {
+        sliderLabels[0].innerHTML = `<span>${t.veryDissatisfied}</span><span>${t.verySatisfied}</span>`;
+      }
+      if (sliderLabels[1]) {
+        sliderLabels[1].innerHTML = `<span>${t.veryRelaxed}</span><span>${t.veryStressed}</span>`;
+      }
+      if (sliderLabels[2]) {
+        sliderLabels[2].innerHTML = `<span>${t.difficult}</span><span>${t.excellent}</span>`;
+      }
+      if (sliderLabels[3]) {
+        sliderLabels[3].innerHTML = `<span>${t.notAtAll}</span><span>${t.completely}</span>`;
+      }
+      
+      // Update select options
+      const wertschaetzungSelect = document.getElementById('wertschaetzung');
+      wertschaetzungSelect.innerHTML = `
+        <option value="ja">${t.yesDefinitely}</option>
+        <option value="nein">${t.noUnfortunately}</option>
+      `;
+      
+      const fazitSelect = document.getElementById('fazit');
+      fazitSelect.innerHTML = `
+        <option value="positiv">${t.positive}</option>
+        <option value="negativ">${t.negative}</option>
+      `;
+      
+      // Update language toggle button
+      const toggleBtn = document.getElementById('languageToggle');
+      toggleBtn.textContent = currentLanguage === 'de' ? '🇺🇸 EN' : '🇩🇪 DE';
+      
+      // Update table and chart if visible
+      if (overviewSection.style.display === 'block') {
+        renderTable();
+        renderTrendSummary();
+        renderChart();
+      }
+    }
+
+    // Language toggle handler
+    document.getElementById('languageToggle').addEventListener('click', () => {
+      currentLanguage = currentLanguage === 'de' ? 'en' : 'de';
+      localStorage.setItem('selectedLanguage', currentLanguage);
+      updateLanguage();
+    });
+
+    // Load saved language preference
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      currentLanguage = savedLanguage;
+    }
+
     // Global Variables
     let reflectionData = [];
     const STORAGE_KEY = 'reflexionsDaten';
@@ -708,6 +992,10 @@
       setTimeout(() => {
         notification.classList.remove('show');
       }, 3000);
+    }
+
+    function t(key) {
+      return translations[currentLanguage][key] || key;
     }
 
     // Slider Management
@@ -813,7 +1101,7 @@
       submitBtn.classList.add('pulse');
       setTimeout(() => submitBtn.classList.remove('pulse'), 600);
 
-      showNotification('✅ Eintrag erfolgreich gespeichert!');
+      showNotification(t('savedSuccess'));
       
       form.reset();
       
@@ -836,8 +1124,8 @@
           <tr>
             <td colspan="9" class="empty-state">
               <div>
-                <p>Noch keine Einträge vorhanden.</p>
-                <p>Fülle den ersten Fragebogen aus! 🚀</p>
+                <p>${t('emptyStateText')}</p>
+                <p>${t('emptyStateSubtext')}</p>
               </div>
             </td>
           </tr>
@@ -998,10 +1286,10 @@
 
       // Draw legend
       const legendItems = [
-        { color: '#4ecdc4', label: '😊 Zufriedenheit' },
-        { color: '#ff6b6b', label: '😰 Stress' },
-        { color: '#667eea', label: '🤝 Team' },
-        { color: '#ffa500', label: '✅ Grenzen' }
+        { color: '#4ecdc4', label: t('satisfactionChart') },
+        { color: '#ff6b6b', label: t('stressChart') },
+        { color: '#667eea', label: t('teamChart') },
+        { color: '#ffa500', label: t('boundariesChart') }
       ];
 
       let legendX = padding;
@@ -1025,7 +1313,7 @@
       ctx.fillStyle = '#2d3748';
       ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('📈 Entwicklung deiner Bewertungen', canvas.width / 2, 20);
+      ctx.fillText(t('chartTitle'), canvas.width / 2, 20);
     }
     function renderTrendSummary() {
       const entries = loadEntries();
@@ -1048,19 +1336,19 @@
       summaryContainer.innerHTML = `
         <div class="trend-card">
           <div class="trend-value">${avgZufriedenheit.toFixed(1)}</div>
-          <div class="trend-label">⭐ Durchschnittliche Zufriedenheit</div>
+          <div class="trend-label">${t('avgSatisfaction')}</div>
         </div>
         <div class="trend-card">
           <div class="trend-value">${avgStress.toFixed(1)}</div>
-          <div class="trend-label">😤 Durchschnittlicher Stress</div>
+          <div class="trend-label">${t('avgStress')}</div>
         </div>
         <div class="trend-card">
           <div class="trend-value">${avgTeam ? avgTeam.toFixed(1) : '—'}</div>
-          <div class="trend-label">🤝 Team-Zusammenarbeit</div>
+          <div class="trend-label">${t('avgTeam')}</div>
         </div>
         <div class="trend-card">
           <div class="trend-value">${Math.round(positivWeeks / totalWeeks * 100)}%</div>
-          <div class="trend-label">🌟 Positive Wochen</div>
+          <div class="trend-label">${t('positiveWeeks')}</div>
         </div>
       `;
     }
@@ -1206,6 +1494,9 @@
     function initApp() {
       // Load data on startup
       reflectionData = loadEntries();
+      
+      // Initialize language
+      updateLanguage();
       
       // Show form initially
       btnForm.click();
