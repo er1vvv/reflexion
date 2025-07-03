@@ -673,10 +673,7 @@
         </div>
 
         <div class="chart-container">
-          <div class="chart-placeholder">
-            📈 Visueller Trend-Chart<br>
-            <small>Zeigt die Entwicklung deiner Bewertungen über die Zeit</small>
-          </div>
+          <canvas id="trendChart" width="800" height="400"></canvas>
         </div>
       </div>
     </section>
@@ -755,13 +752,14 @@
       setTimeout(() => btnForm.classList.remove('pulse'), 600);
     });
 
-    btnOverview.addEventListener('click', () => {
+      btnOverview.addEventListener('click', () => {
       formSection.style.display = 'none';
       overviewSection.style.display = 'block';
       btnOverview.classList.add('pulse');
       setTimeout(() => btnOverview.classList.remove('pulse'), 600);
       renderTable();
       renderTrendSummary();
+      renderChart();
     });
 
     // Data Management
@@ -867,7 +865,168 @@
       });
     }
 
-    // Trend Summary
+    // Chart Rendering
+    function renderChart() {
+      const entries = loadEntries();
+      const canvas = document.getElementById('trendChart');
+      const ctx = canvas.getContext('2d');
+      
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      if (entries.length === 0) {
+        // Show empty state
+        ctx.fillStyle = '#a0aec0';
+        ctx.font = '18px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('📈 Fülle Einträge aus, um Trends zu sehen', canvas.width / 2, canvas.height / 2);
+        return;
+      }
+
+      // Sort entries by date
+      entries.sort((a, b) => new Date(a.datum) - new Date(b.datum));
+
+      // Chart dimensions
+      const padding = 60;
+      const chartWidth = canvas.width - (padding * 2);
+      const chartHeight = canvas.height - (padding * 2);
+
+      // Draw background
+      ctx.fillStyle = '#f8f9fa';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw grid lines
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      
+      // Horizontal grid lines (for values 1-10)
+      for (let i = 1; i <= 10; i++) {
+        const y = padding + chartHeight - ((i - 1) / 9) * chartHeight;
+        ctx.beginPath();
+        ctx.moveTo(padding, y);
+        ctx.lineTo(padding + chartWidth, y);
+        ctx.stroke();
+        
+        // Y-axis labels
+        ctx.fillStyle = '#4a5568';
+        ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText(i.toString(), padding - 10, y + 4);
+      }
+
+      // Vertical grid lines (for dates)
+      if (entries.length > 1) {
+        for (let i = 0; i < entries.length; i++) {
+          const x = padding + (i / (entries.length - 1)) * chartWidth;
+          ctx.beginPath();
+          ctx.moveTo(x, padding);
+          ctx.lineTo(x, padding + chartHeight);
+          ctx.stroke();
+        }
+      }
+
+      // Helper function to draw line
+      function drawLine(data, color, label) {
+        if (data.every(d => d === null)) return;
+
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+
+        let firstPoint = true;
+        for (let i = 0; i < data.length; i++) {
+          if (data[i] !== null) {
+            const x = padding + (i / Math.max(entries.length - 1, 1)) * chartWidth;
+            const y = padding + chartHeight - ((data[i] - 1) / 9) * chartHeight;
+            
+            if (firstPoint) {
+              ctx.moveTo(x, y);
+              firstPoint = false;
+            } else {
+              ctx.lineTo(x, y);
+            }
+          }
+        }
+        ctx.stroke();
+
+        // Draw points
+        ctx.fillStyle = color;
+        for (let i = 0; i < data.length; i++) {
+          if (data[i] !== null) {
+            const x = padding + (i / Math.max(entries.length - 1, 1)) * chartWidth;
+            const y = padding + chartHeight - ((data[i] - 1) / 9) * chartHeight;
+            
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Value labels on points
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 10px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(data[i].toString(), x, y + 3);
+            ctx.fillStyle = color;
+          }
+        }
+      }
+
+      // Prepare data
+      const zufriedenheitData = entries.map(e => e.zufriedenheit);
+      const stressData = entries.map(e => e.stress);
+      const teamData = entries.map(e => e.team);
+      const grenzenData = entries.map(e => e.grenzen);
+
+      // Draw lines
+      drawLine(zufriedenheitData, '#4ecdc4', 'Zufriedenheit');
+      drawLine(stressData, '#ff6b6b', 'Stress');
+      drawLine(teamData, '#667eea', 'Team');
+      drawLine(grenzenData, '#ffa500', 'Grenzen');
+
+      // Draw X-axis labels (dates)
+      ctx.fillStyle = '#4a5568';
+      ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+      ctx.textAlign = 'center';
+      
+      for (let i = 0; i < entries.length; i++) {
+        const x = padding + (i / Math.max(entries.length - 1, 1)) * chartWidth;
+        const date = new Date(entries[i].datum).toLocaleDateString('de-DE', { 
+          day: '2-digit', 
+          month: '2-digit' 
+        });
+        ctx.fillText(date, x, padding + chartHeight + 20);
+      }
+
+      // Draw legend
+      const legendItems = [
+        { color: '#4ecdc4', label: '😊 Zufriedenheit' },
+        { color: '#ff6b6b', label: '😰 Stress' },
+        { color: '#667eea', label: '🤝 Team' },
+        { color: '#ffa500', label: '✅ Grenzen' }
+      ];
+
+      let legendX = padding;
+      const legendY = 30;
+
+      legendItems.forEach(item => {
+        // Draw color box
+        ctx.fillStyle = item.color;
+        ctx.fillRect(legendX, legendY - 10, 12, 12);
+        
+        // Draw label
+        ctx.fillStyle = '#4a5568';
+        ctx.font = '14px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(item.label, legendX + 20, legendY);
+        
+        legendX += ctx.measureText(item.label).width + 60;
+      });
+
+      // Chart title
+      ctx.fillStyle = '#2d3748';
+      ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('📈 Entwicklung deiner Bewertungen', canvas.width / 2, 20);
+    }
     function renderTrendSummary() {
       const entries = loadEntries();
       const summaryContainer = document.getElementById('trendSummary');
@@ -1022,6 +1181,7 @@
           if (overviewSection.style.display === 'block') {
             renderTable();
             renderTrendSummary();
+            renderChart();
           }
         } catch (err) {
           showNotification('Fehler beim Importieren: ' + err.message, 'error');
@@ -1038,6 +1198,7 @@
         showNotification('🗑️ Alle Einträge wurden gelöscht.');
         renderTable();
         renderTrendSummary();
+        renderChart();
       }
     });
 
