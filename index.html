@@ -1095,14 +1095,14 @@
       drawLine(teamData, '#667eea');
       drawLine(grenzenData, '#ffa500');
 
-      // X-axis labels
+      // X-axis labels (with proper date formatting for current language)
       ctx.fillStyle = '#4a5568';
       ctx.font = '12px -apple-system, sans-serif';
       ctx.textAlign = 'center';
       
       for (let i = 0; i < entries.length; i++) {
         const x = padding + (i / Math.max(entries.length - 1, 1)) * chartWidth;
-        const date = new Date(entries[i].datum).toLocaleDateString('de-DE', { 
+        const date = new Date(entries[i].datum).toLocaleDateString(currentLanguage === 'de' ? 'de-DE' : 'en-US', { 
           day: '2-digit', 
           month: '2-digit' 
         });
@@ -1111,10 +1111,10 @@
 
       // Legend
       const legendItems = [
-        { color: '#4ecdc4', label: '😊 Zufriedenheit' },
-        { color: '#ff6b6b', label: '😰 Stress' },
-        { color: '#667eea', label: '🤝 Team' },
-        { color: '#ffa500', label: '✅ Grenzen' }
+        { color: '#4ecdc4', label: currentLanguage === 'de' ? '😊 Zufriedenheit' : '😊 Satisfaction' },
+        { color: '#ff6b6b', label: currentLanguage === 'de' ? '😰 Stress' : '😰 Stress' },
+        { color: '#667eea', label: currentLanguage === 'de' ? '🤝 Team' : '🤝 Team' },
+        { color: '#ffa500', label: currentLanguage === 'de' ? '✅ Grenzen' : '✅ Boundaries' }
       ];
 
       let legendX = padding;
@@ -1136,7 +1136,8 @@
       ctx.fillStyle = '#2d3748';
       ctx.font = 'bold 16px -apple-system, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('📈 Entwicklung der Bewertungen', canvas.width / 2, 20);
+      const chartTitle = currentLanguage === 'de' ? '📈 Entwicklung der Bewertungen' : '📈 Development of Ratings';
+      ctx.fillText(chartTitle, canvas.width / 2, 20);
     }
 
     // Export Functions
